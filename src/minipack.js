@@ -243,7 +243,14 @@ function bundle(graph) {
   return result;
 }
 
-const graph = createGraph('./example/entry.js');
+const graph = createGraph('./example/entry.mjs');
 const result = bundle(graph);
-
+fs.writeFile('src/result.js',result, (err)=>{
+  if(err){
+    console.log('No se pudo escribir')
+  }
+  else{
+    console.log('Se escribio el bundle')
+  }
+})
 console.log(result);
